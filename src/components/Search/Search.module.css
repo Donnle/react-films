@@ -1,0 +1,23 @@
+.search {
+  max-width: 500px;
+  width: 100%;
+  padding: 12px 13px;
+  border-radius: 10px;
+  background-color: #C4C4C4;
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input input {
+  width: 250%;
+  background-color: transparent;
+}
+
+.icon {
+  cursor: pointer;
+  background-color: transparent;
+}

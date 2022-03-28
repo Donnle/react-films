@@ -1,0 +1,7 @@
+.pagination {
+  text-align: center;
+}
+
+.pagination span {
+  cursor: pointer;
+}

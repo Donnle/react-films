@@ -1,0 +1,45 @@
+.item {
+  background: #C48888;
+  border-radius: 10px;
+  max-width: 320px;
+  overflow: hidden;
+}
+
+.item__image {
+  width: 320px;
+  height: 330px;
+}
+
+.item__image img {
+  width: 320px;
+  height: 330px;
+  object-fit: cover;
+}
+
+.item__text {
+  padding: 10px 13px;
+}
+
+.item__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.item__title p {
+  font-size: 3.6rem;
+  line-height: 1.2em;
+}
+
+.item__title svg {
+  width: 30px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.item__title span,
+.item__subtitle p {
+  font-size: 2rem;
+  line-height: 1.15em;
+}

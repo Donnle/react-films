@@ -1,0 +1,46 @@
+.wrapper {
+  padding: 10px 20px;
+  background-color: #7E4343;
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select {
+  width: 201px;
+}
+
+/* HEADER USER */
+.user__flexbox {
+  display: flex;
+  gap: 25px;
+}
+
+.user__register,
+.user__login {
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.user__register span,
+.user__login span {
+  font-size: 2rem;
+  line-height: 1.15em;
+}
+
+.user__login {
+  padding: 17px 33px;
+  background: #A44747;
+}
+
+.user__register {
+  padding: 17px 19px;
+  background: #C4C4C4;
+}
+
+.user__login span {
+  color: #510000;
+}
