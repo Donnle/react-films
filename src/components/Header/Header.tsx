@@ -5,9 +5,10 @@ import styles from './Header.module.css'
 import Search from "../Search";
 
 interface Props {
+  setTextForFind: any,
 }
 
-const Header = (props: Props) => {
+const Header = ({setTextForFind}: Props) => {
   const options = [
     {value: "Comedy", label: "Comedy"},
     {value: "Fantasy", label: "Fantasy"},
@@ -40,7 +41,7 @@ const Header = (props: Props) => {
           <div className={styles.select}>
             <Select options={options}/>
           </div>
-          <Search/>
+          <Search setTextForFind={setTextForFind}/>
           <div className={styles.user}>
             <div className={styles.user__flexbox}>
               <div className={styles.user__register}>

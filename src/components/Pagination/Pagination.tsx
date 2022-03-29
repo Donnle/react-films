@@ -26,6 +26,5 @@ const Pagination = ({currentPage, setCurrentPage, countPages}: Props) => {
 const mapStateToProps = (state: RootState) => ({
   countPages: countPagesFilmsSelector(state),
 })
-const mapDispatchToProps = (dispatch: any) => ({})
 
 export default connect(mapStateToProps)(Pagination)

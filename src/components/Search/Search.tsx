@@ -1,32 +1,25 @@
-import {ChangeEvent, useState} from "react";
-import {connect} from "react-redux";
-import {loadingFilmsSelector} from "../../redux/selectors";
-import {RootState} from "../../redux/store";
-import {loadFilms} from "../../redux/actions";
+import {ChangeEvent, useEffect, useState} from "react";
 import GlobalSvgIcons from "../../assets/icons/GlobalSvgIcons";
 
 import styles from './Search.module.css'
 
 interface Props {
-  loading: boolean,
-  loadFilms: (page: number, searchText: string) => void,
+  setTextForFind: any
 }
 
-const Search = ({loading, loadFilms}: Props) => {
-  const [searchText, setSearchText] = useState('')
+const Search = ({setTextForFind}: Props) => {
+  const [searchText, setSearchText] = useState<string>('')
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) =>
     setSearchText(event.target.value)
-  
 
-  const handleSearch = (e: any) => {
-    e.preventDefault()
-    loadFilms(1, searchText)
-  }
+  useEffect(() => {
+    setTextForFind(searchText)
+  }, [setTextForFind, searchText])
 
   return (
     <div className={styles.search}>
-      <form className={styles.flexbox} onSubmit={handleSearch}>
+      <form className={styles.flexbox} onSubmit={e => e.preventDefault()}>
         <div className={styles.input}>
           <input
             type="text"
@@ -44,12 +37,4 @@ const Search = ({loading, loadFilms}: Props) => {
   )
 }
 
-const mapStateToProps = (state: RootState) => ({
-  loading: loadingFilmsSelector(state),
-})
-
-const mapDispatchToProps = (dispatch: any) => ({
-  loadFilms: (page: number) => dispatch(loadFilms(page))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default Search
