@@ -7,12 +7,12 @@ import Header from "../Header";
 
 import styles from './App.module.css';
 
+
 const App = () => {
   const [textForFind, setTextForFind] = useState<string>('')
   const [activeGenre, setActiveGenre] = useState<string>('All')
 
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')!))
-  console.log(userData)
 
   return (
     <div className={styles.container}>

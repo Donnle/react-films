@@ -18,7 +18,7 @@ const Cards = ({films, textForFind, activeGenre}: IProps) => {
 
     const isFilmHasGenre =
       activeGenre === 'All' ? true : genres.includes(activeGenre)
-    
+
     const isFilmHasFindText =
       !textForFindInLowerCase
         .split(' ')
@@ -38,7 +38,7 @@ const Cards = ({films, textForFind, activeGenre}: IProps) => {
 }
 
 const mapStateToProps = (state: IRootState) => ({
-  films: filmsSelector(state),
+  films: filmsSelector(state)
 })
 
 export default connect(mapStateToProps)(Cards)

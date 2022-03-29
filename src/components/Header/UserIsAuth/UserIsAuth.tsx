@@ -10,8 +10,8 @@ interface Props {
 
 const UserIsAuth = ({userData, setUserData}: Props) => {
   const handleUserClick = () => {
-    setUserData('')
     localStorage.removeItem('userData')
+    setUserData('')
   }
 
   return (

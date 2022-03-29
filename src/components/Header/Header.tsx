@@ -1,11 +1,11 @@
 import Select from 'react-select'
+import {NavLink} from "react-router-dom";
 import Search from "../Search";
+import UserIsAuth from "./UserIsAuth";
+import UserIsNotAuth from "./UserIsNotAuth";
 import GlobalSvgIcons from "../../assets/icons/GlobalSvgIcons";
 
 import styles from './Header.module.css'
-import {NavLink} from "react-router-dom";
-import UserIsAuth from "./UserIsAuth";
-import UserIsNotAuth from "./UserIsNotAuth";
 
 interface IProps {
   setTextForFind: (value: string) => void,

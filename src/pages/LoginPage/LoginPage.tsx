@@ -19,8 +19,8 @@ const LoginPage = ({setUserData}: Props) => {
     await axios.post('/api/login-user', {login, password})
       .then(res => {
         localStorage.setItem('userData', JSON.stringify(res.data.userData))
-        setUserData(JSON.parse(localStorage.getItem('userData')!))
-      }).catch(err => alert('User is not defined'))
+        setUserData(res.data.userData)
+      }).catch(_ => alert('User is not defined'))
   }
 
   return (

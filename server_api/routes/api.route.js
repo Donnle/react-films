@@ -1,21 +1,15 @@
 const {Router} = require('express')
-const mongoose = require("mongoose");
 const User = require('../model/User')
 const Film = require('../model/Film')
 const router = Router()
 
 router.get('/films', async (req, res) => {
   const page = +req.query.page - 1    // pagination starts from 0
-  const searchText = req.query.searchText || 0
   const countPostsOnPage = 20
 
-  if (searchText) {
-    const films = await Film.find({title: {$regex: searchText}})
-    return res.status(200).json({films})
-  } else {
-    const films = await Film.find({_id: {$gt: countPostsOnPage * page}}).limit(countPostsOnPage)
-    return res.status(200).json({films, countPages: 8})
-  }
+  const films = await Film.find({_id: {$gt: countPostsOnPage * page}}).limit(countPostsOnPage)
+  return res.status(200).json({films, countPages: 8})
+
 })
 
 router.post('/add-user', async (req, res) => {
@@ -28,24 +22,22 @@ router.post('/add-user', async (req, res) => {
   if (isLoginUniq && isUsernameUniq) {
     const user = new User(userData)
     user.save()
-    return res.send({message: "user was created"})
+    return res.status(201).send({message: "User was created"})
   } else if (isLoginUniq) {
-    return res.send({message: "This login is taken"})
+    return res.status(406).send({message: "This login is taken"})
   } else if (isUsernameUniq) {
-    return res.send({message: "This nickname is taken"})
+    return res.status(406).send({message: "This nickname is taken"})
   } else {
-    return res.send({message: "This login and nickname are taken"})
+    return res.status(406).send({message: "This login and nickname are taken"})
   }
 })
 
 router.post('/login-user', async (req, res) => {
   const {login, password} = req.body
   const userData = await User.findOne({login, password})
-  if (userData) {
-    return res.send({userData})
-  } else {
-    return res.status(400).send({message: "Такого пользователя нет"})
-  }
+
+  if (userData) return res.status(201).send({userData})
+  return res.status(406).send({message: "User is not defined"})
 })
 
 module.exports = router
