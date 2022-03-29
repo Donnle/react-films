@@ -1,6 +1,7 @@
+import {FormEvent, useState} from "react";
 import styles from './LoginPage.module.css'
-import {FormEvent, FormEventHandler, useState} from "react";
 import axios from "axios";
+import {NavLink} from "react-router-dom";
 
 interface Props {
 
@@ -14,10 +15,10 @@ const LoginPage = (props: Props) => {
   const handlePasswordChange = (event: any) => setPassword(event.target.value)
 
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    console.log(1)
     e.preventDefault()
-    await axios.post('/api/add-user', {login, password})
-      .then(console.log)
+    await axios.post('/api/login-user', {login, password})
+      .then(res => localStorage.setItem('userData', JSON.stringify(res.data.userData)))
+      .catch(err => new Error('User is not defined'))
   }
 
   return (
@@ -56,9 +57,9 @@ const LoginPage = (props: Props) => {
             <button className={styles.mainButtons__login}>
               <span>ВХОД</span>
             </button>
-            <div className={styles.mainButtons__registration}>
+            <NavLink to='/registration' className={styles.mainButtons__registration}>
               <span>Еще не зарегистрированы?</span>
-            </div>
+            </NavLink>
           </div>
         </form>
       </main>

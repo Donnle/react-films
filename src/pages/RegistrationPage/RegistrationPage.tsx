@@ -1,6 +1,7 @@
 import styles from './RegistrationPage.module.css'
-import {FormEvent, FormEventHandler, useState} from "react";
+import {FormEvent, useState} from "react";
 import axios from "axios";
+import {NavLink} from "react-router-dom";
 
 interface Props {
 
@@ -66,9 +67,9 @@ const RegistrationPage = (props: Props) => {
             <button className={styles.mainButtons__login}>
               <span>РЕГИСТРАЦИЯ</span>
             </button>
-            <div className={styles.mainButtons__registration}>
+            <NavLink to='/login' className={styles.mainButtons__registration}>
               <span>Уже есть аккаунт?</span>
-            </div>
+            </NavLink>
           </div>
         </form>
       </main>

@@ -20,7 +20,7 @@ router.get('/films', async (req, res) => {
 
 router.post('/add-user', async (req, res) => {
   const userData = req.body
-  const {username, login, password} = userData
+  const {username, login} = userData
 
   const isLoginUniq = !await User.findOne({login})
   const isUsernameUniq = !await User.findOne({username})
@@ -35,6 +35,16 @@ router.post('/add-user', async (req, res) => {
     return res.send({message: "This nickname is taken"})
   } else {
     return res.send({message: "This login and nickname are taken"})
+  }
+})
+
+router.post('/login-user', async (req, res) => {
+  const {login, password} = req.body
+  const userData = await User.findOne({login, password})
+  if (userData) {
+    return res.send({userData})
+  } else {
+    return res.status(400).send({message: "Такого пользователя нет"})
   }
 })
 

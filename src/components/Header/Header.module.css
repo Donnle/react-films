@@ -19,6 +19,21 @@
   gap: 25px;
 }
 
+.user__follows,
+.user__username {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background-color: #C4C4C4;
+  border-radius: 10px;
+  color: #000;
+}
+
+.user__username {
+  padding: 14px 57px;
+}
+
 .user__register,
 .user__login {
   cursor: pointer;
@@ -39,6 +54,7 @@
 .user__register {
   padding: 17px 19px;
   background: #C4C4C4;
+  color: #000;
 }
 
 .user__login span {

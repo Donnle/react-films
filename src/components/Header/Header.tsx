@@ -36,9 +36,10 @@ const Header = ({setTextForFind, setActiveGenre}: IProps) => {
     {value: "Sport", label: "Sport"},
   ]
 
-  const handleChange = (selectedOptions: any) => {
-    setActiveGenre(selectedOptions.value)
-  }
+  const handleChange = (selectedOptions: any) => setActiveGenre(selectedOptions.value)
+
+  const userData = JSON.parse(localStorage.getItem('userData')!)
+  console.log(userData)
 
   return (
     <header>
@@ -58,13 +59,21 @@ const Header = ({setTextForFind, setActiveGenre}: IProps) => {
           <div className={styles.user}>
             <div className={styles.user__flexbox}>
 
-              <NavLink to='/registration' className={styles.user__register}>
-                <span>Регистрация</span>
+              <NavLink to='/follows' className={styles.user__follows}>
+                <GlobalSvgIcons type='active-heard'/>
               </NavLink>
 
-              <NavLink to='/login' className={styles.user__login}>
-                <span>Вход</span>
+              <NavLink to='/' className={styles.user__username}>
+                {userData.username}
               </NavLink>
+
+              {/*<NavLink to='/registration' className={styles.user__register}>*/}
+              {/*  <span>Регистрация</span>*/}
+              {/*</NavLink>*/}
+
+              {/*<NavLink to='/login' className={styles.user__login}>*/}
+              {/*  <span>Вход</span>*/}
+              {/*</NavLink>*/}
 
             </div>
           </div>
