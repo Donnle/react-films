@@ -7,11 +7,12 @@ import {loadingFilmsSelector} from "../../redux/selectors";
 import {loadFilms} from "../../redux/actions";
 
 import styles from "./CardsPage.module.css";
+import Loader from "../../components/Loader";
 
 interface IProps {
   loadFilms: (currPage: number) => void,
   loading: boolean,
-  textForFind: string,
+  textForFind: any,
   activeGenre: string,
 }
 
@@ -27,6 +28,7 @@ const CardsPage = ({loadFilms, loading, textForFind, activeGenre}: IProps) => {
       <div className={styles.wrapper}>
         <Cards textForFind={textForFind} activeGenre={activeGenre}/>
       </div>
+      {loading ? <Loader/> : ''}
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage}/>
     </main>
   )
