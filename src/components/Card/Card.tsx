@@ -1,11 +1,11 @@
 import GlobalSvgIcons from "../../assets/icons/GlobalSvgIcons";
-import {Film} from '../../redux/store'
+import {IFilm} from '../../redux/store'
 
 import styles from './Card.module.css'
 
 
-const Card = (props: Film) => {
-  const {genres, posterUrl, title, year}: Film = props
+const Card = (props: IFilm) => {
+  const {genres, posterUrl, title, year}: IFilm = props
   return (
     <li className={styles.item}>
       <div className={styles.item__image}>

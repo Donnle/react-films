@@ -1,14 +1,14 @@
 import Select from 'react-select'
+import Search from "../Search";
 import GlobalSvgIcons from "../../assets/icons/GlobalSvgIcons";
 
 import styles from './Header.module.css'
-import Search from "../Search";
 
-interface Props {
-  setTextForFind: any,
+interface IProps {
+  setTextForFind: (value: string) => void,
 }
 
-const Header = ({setTextForFind}: Props) => {
+const Header = ({setTextForFind}: IProps) => {
   const options = [
     {value: "Comedy", label: "Comedy"},
     {value: "Fantasy", label: "Fantasy"},

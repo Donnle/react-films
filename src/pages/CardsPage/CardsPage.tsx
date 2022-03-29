@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {connect} from "react-redux";
-import {RootState} from "../../redux/store";
+import {IRootState} from "../../redux/store";
 import Cards from "../../components/Cards/Cards";
 import Pagination from "../../components/Pagination";
 import {loadingFilmsSelector} from "../../redux/selectors";
@@ -8,13 +8,13 @@ import {loadFilms} from "../../redux/actions";
 
 import styles from "./CardsPage.module.css";
 
-interface Props {
+interface IProps {
   loadFilms: (currPage: number) => void,
   loading: boolean,
   textForFind: string,
 }
 
-const CardsPage = ({loadFilms, loading, textForFind}: Props) => {
+const CardsPage = ({loadFilms, loading, textForFind}: IProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1)
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const CardsPage = ({loadFilms, loading, textForFind}: Props) => {
   )
 }
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = (state: IRootState) => ({
   loading: loadingFilmsSelector(state),
 })
 

@@ -1,32 +1,35 @@
 import {connect} from "react-redux";
 import Card from "../Card";
-import {RootState, Film} from "../../redux/store";
+import {IRootState, IFilm} from "../../redux/store";
 import {filmsSelector} from "../../redux/selectors";
 
 import styles from './Cards.module.css'
 
-interface Props {
-  films: Array<Film>,
+interface IProps {
+  films: Array<IFilm>,
   textForFind: string
 }
 
-const Cards = ({films, textForFind}: Props) => {
-  const sortedFilms = films.filter(({title}: Film) => {
+const Cards = ({films, textForFind}: IProps) => {
+  const sortedFilms = films.filter(({title}: IFilm) => {
     const titleInLowerCase = title.toLowerCase()
     const textForFindInLowerCase = textForFind.toLowerCase()
-    return !textForFindInLowerCase.split(' ').map(word => titleInLowerCase.includes(word)).includes(false)
+    return !textForFindInLowerCase
+      .split(' ')
+      .map((word: string) => titleInLowerCase.includes(word))
+      .includes(false)
   })
 
   return (
     <ul className={styles.list}>
-      {sortedFilms?.map((film: Film) =>
+      {sortedFilms?.map((film: IFilm) =>
         <Card key={film._id} {...film}/>
       )}
     </ul>
   )
 }
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = (state: IRootState) => ({
   films: filmsSelector(state),
 })
 

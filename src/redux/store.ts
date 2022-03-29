@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import reducers from "./reducers";
 import {logger} from "./middlewares";
 
-export interface Film {
+export interface IFilm {
   _id: number,
   actors: string,
   director: string,
@@ -16,16 +16,16 @@ export interface Film {
   year: number,
 }
 
-export interface Films {
-  entities: Array<Film>,
+export interface IFilms {
+  entities: IFilm,
   countPages: number,
   loading: boolean,
   loaded: boolean,
   error: null | object,
 }
 
-export interface RootState {
-  films: Films,
+export interface IRootState {
+  films: IFilms,
 }
 
 const middlewares = applyMiddleware(thunk, logger)

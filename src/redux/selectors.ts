@@ -1,14 +1,14 @@
 import {createSelector} from "reselect";
-import {RootState} from "./store";
+import {IRootState} from "./store";
 
-const filmsObjectSelector = ({films}: RootState) => films.entities
+const filmsObjectSelector = ({films}: IRootState) => films.entities
 
 export const filmsSelector = createSelector(
   filmsObjectSelector,
   Object.values
 )
 
-export const countPagesFilmsSelector = ({films}: RootState) => films.countPages
-export const loadingFilmsSelector = ({films}: RootState) => films.loading
-export const loadedFilmsSelector = ({films}: RootState) => films.loaded
-export const errorFilmsSelector = ({films}: RootState) => films.error
+export const countPagesFilmsSelector = ({films}: IRootState) => films.countPages
+export const loadingFilmsSelector = ({films}: IRootState) => films.loading
+export const loadedFilmsSelector = ({films}: IRootState) => films.loaded
+export const errorFilmsSelector = ({films}: IRootState) => films.error

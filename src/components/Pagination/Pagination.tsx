@@ -1,16 +1,16 @@
 import {connect} from "react-redux";
 import {countPagesFilmsSelector} from "../../redux/selectors";
-import {RootState} from "../../redux/store";
+import {IRootState} from "../../redux/store";
 
 import styles from './Pagination.module.css'
 
-interface Props {
+interface IProps {
   currentPage: number,
-  setCurrentPage: (arg: number) => any,
+  setCurrentPage: (arg: number) => void,
   countPages: number,
 }
 
-const Pagination = ({currentPage, setCurrentPage, countPages}: Props) => {
+const Pagination = ({currentPage, setCurrentPage, countPages}: IProps) => {
   const handleIncrement = () =>
     setCurrentPage(countPages === currentPage ? currentPage : currentPage + 1)
 
@@ -23,7 +23,7 @@ const Pagination = ({currentPage, setCurrentPage, countPages}: Props) => {
   )
 }
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = (state: IRootState) => ({
   countPages: countPagesFilmsSelector(state),
 })
 

@@ -3,11 +3,11 @@ import GlobalSvgIcons from "../../assets/icons/GlobalSvgIcons";
 
 import styles from './Search.module.css'
 
-interface Props {
-  setTextForFind: any
+interface IProps {
+  setTextForFind: (value: string) => void,
 }
 
-const Search = ({setTextForFind}: Props) => {
+const Search = ({setTextForFind}: IProps) => {
   const [searchText, setSearchText] = useState<string>('')
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) =>
