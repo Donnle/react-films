@@ -4,13 +4,17 @@ import GlobalSvgIcons from "../../assets/icons/GlobalSvgIcons";
 
 import styles from './Header.module.css'
 import {NavLink} from "react-router-dom";
+import UserIsAuth from "./UserIsAuth";
+import UserIsNotAuth from "./UserIsNotAuth";
 
 interface IProps {
   setTextForFind: (value: string) => void,
-  setActiveGenre: (value: any) => void
+  setActiveGenre: (value: any) => void,
+  userData: any,
+  setUserData: any,
 }
 
-const Header = ({setTextForFind, setActiveGenre}: IProps) => {
+const Header = ({setTextForFind, setActiveGenre, userData, setUserData}: IProps) => {
   const options: any = [
     {value: "All", label: "All"},
     {value: "Comedy", label: "Comedy"},
@@ -38,9 +42,6 @@ const Header = ({setTextForFind, setActiveGenre}: IProps) => {
 
   const handleChange = (selectedOptions: any) => setActiveGenre(selectedOptions.value)
 
-  const userData = JSON.parse(localStorage.getItem('userData')!)
-  console.log(userData)
-
   return (
     <header>
       <div className={styles.wrapper}>
@@ -58,23 +59,7 @@ const Header = ({setTextForFind, setActiveGenre}: IProps) => {
           <Search setTextForFind={setTextForFind}/>
           <div className={styles.user}>
             <div className={styles.user__flexbox}>
-
-              <NavLink to='/follows' className={styles.user__follows}>
-                <GlobalSvgIcons type='active-heard'/>
-              </NavLink>
-
-              <NavLink to='/' className={styles.user__username}>
-                {userData.username}
-              </NavLink>
-
-              {/*<NavLink to='/registration' className={styles.user__register}>*/}
-              {/*  <span>Регистрация</span>*/}
-              {/*</NavLink>*/}
-
-              {/*<NavLink to='/login' className={styles.user__login}>*/}
-              {/*  <span>Вход</span>*/}
-              {/*</NavLink>*/}
-
+              {userData ? <UserIsAuth userData={userData} setUserData={setUserData}/> : <UserIsNotAuth/>}
             </div>
           </div>
         </div>

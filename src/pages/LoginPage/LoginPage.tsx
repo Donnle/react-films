@@ -4,10 +4,10 @@ import axios from "axios";
 import {NavLink} from "react-router-dom";
 
 interface Props {
-
+  setUserData: any,
 }
 
-const LoginPage = (props: Props) => {
+const LoginPage = ({setUserData}: Props) => {
   const [login, setLogin] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
@@ -17,8 +17,10 @@ const LoginPage = (props: Props) => {
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     await axios.post('/api/login-user', {login, password})
-      .then(res => localStorage.setItem('userData', JSON.stringify(res.data.userData)))
-      .catch(err => new Error('User is not defined'))
+      .then(res => {
+        localStorage.setItem('userData', JSON.stringify(res.data.userData))
+        setUserData(JSON.parse(localStorage.getItem('userData')!))
+      }).catch(err => alert('User is not defined'))
   }
 
   return (

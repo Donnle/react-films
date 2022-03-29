@@ -11,17 +11,22 @@ const App = () => {
   const [textForFind, setTextForFind] = useState<string>('')
   const [activeGenre, setActiveGenre] = useState<string>('All')
 
-  const userData = localStorage.getItem('userData')
+  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')!))
+  console.log(userData)
 
   return (
     <div className={styles.container}>
-      <Header setTextForFind={setTextForFind} setActiveGenre={setActiveGenre}/>
+      <Header
+        setTextForFind={setTextForFind}
+        setActiveGenre={setActiveGenre}
+        userData={userData}
+        setUserData={setUserData}/>
       <Routes>
         <Route path='/' element={<CardsPage textForFind={textForFind} activeGenre={activeGenre}/>}/>
 
         {userData ?
           <Route path="/login" element={<Navigate to="/" replace/>}/>
-          : <Route path='/login' element={<LoginPage/>}/>}
+          : <Route path='/login' element={<LoginPage setUserData={setUserData}/>}/>}
 
         {userData ?
           <Route path="/registration" element={<Navigate to="/" replace/>}/>
