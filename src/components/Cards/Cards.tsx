@@ -7,18 +7,21 @@ import styles from './Cards.module.css'
 
 interface IProps {
   films: Array<IFilm>,
-  textForFind: string
+  textForFind: string,
+  activeGenre: string,
 }
 
-const Cards = ({films, textForFind}: IProps) => {
-  const sortedFilms = films.filter(({title}: IFilm) => {
+const Cards = ({films, textForFind, activeGenre}: IProps) => {
+  const sortedFilms = films.filter(({title, genres}: IFilm) => {
     const titleInLowerCase = title.toLowerCase()
     const textForFindInLowerCase = textForFind.toLowerCase()
+
     return !textForFindInLowerCase
       .split(' ')
       .map((word: string) => titleInLowerCase.includes(word))
-      .includes(false)
+      .includes(false) && activeGenre === 'All' ? true : genres.includes(activeGenre)
   })
+  // const sortedFilmsByCategory =
 
   return (
     <ul className={styles.list}>

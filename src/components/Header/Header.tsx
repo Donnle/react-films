@@ -6,10 +6,12 @@ import styles from './Header.module.css'
 
 interface IProps {
   setTextForFind: (value: string) => void,
+  setActiveGenre: (value: any) => void
 }
 
-const Header = ({setTextForFind}: IProps) => {
-  const options = [
+const Header = ({setTextForFind, setActiveGenre}: IProps) => {
+  const options: any = [
+    {value: "All", label: "All"},
     {value: "Comedy", label: "Comedy"},
     {value: "Fantasy", label: "Fantasy"},
     {value: "Crime", label: "Crime"},
@@ -23,9 +25,9 @@ const Header = ({setTextForFind}: IProps) => {
     {value: "Mystery", label: "Mystery"},
     {value: "Biography", label: "Biography"},
     {value: "Action", label: "Action"},
-    {value: "FilmNoir", label: "Film-Noir"},
+    {value: "Film-Noir", label: "Film-Noir"},
     {value: "Romance", label: "Romance"},
-    {value: "SciFi", label: "Sci-Fi"},
+    {value: "Sci-Fi", label: "Sci-Fi"},
     {value: "War", label: "War"},
     {value: "Western", label: "Western"},
     {value: "Horror", label: "Horror"},
@@ -33,13 +35,21 @@ const Header = ({setTextForFind}: IProps) => {
     {value: "Sport", label: "Sport"},
   ]
 
+  const handleChange = (selectedOptions: any) => {
+    setActiveGenre(selectedOptions.value)
+  }
+
   return (
     <header>
       <div className={styles.wrapper}>
         <div className={styles.flexbox}>
           <GlobalSvgIcons type={'logo'}/>
           <div className={styles.select}>
-            <Select options={options}/>
+            <Select
+              defaultValue={options[0]}
+              onChange={handleChange}
+              options={options}
+            />
           </div>
           <Search setTextForFind={setTextForFind}/>
           <div className={styles.user}>

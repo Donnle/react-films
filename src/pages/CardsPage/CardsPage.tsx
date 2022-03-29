@@ -12,9 +12,10 @@ interface IProps {
   loadFilms: (currPage: number) => void,
   loading: boolean,
   textForFind: string,
+  activeGenre: string,
 }
 
-const CardsPage = ({loadFilms, loading, textForFind}: IProps) => {
+const CardsPage = ({loadFilms, loading, textForFind, activeGenre}: IProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1)
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const CardsPage = ({loadFilms, loading, textForFind}: IProps) => {
   return (
     <main className={styles.main}>
       <div className={styles.wrapper}>
-        <Cards textForFind={textForFind}/>
+        <Cards textForFind={textForFind} activeGenre={activeGenre}/>
       </div>
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage}/>
     </main>

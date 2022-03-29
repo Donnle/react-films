@@ -7,12 +7,13 @@ import {useState} from "react";
 
 const App = () => {
   const [textForFind, setTextForFind] = useState<string>('')
+  const [activeGenre, setActiveGenre] = useState<string>('All')
 
   return (
     <div className={styles.container}>
-      <Header setTextForFind={setTextForFind}/>
+      <Header setTextForFind={setTextForFind} setActiveGenre={setActiveGenre}/>
       <Routes>
-        <Route path='/' element={<CardsPage textForFind={textForFind}/>}/>
+        <Route path='/' element={<CardsPage textForFind={textForFind} activeGenre={activeGenre}/>}/>
       </Routes>
     </div>
   );
