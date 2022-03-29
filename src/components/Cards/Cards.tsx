@@ -16,12 +16,17 @@ const Cards = ({films, textForFind, activeGenre}: IProps) => {
     const titleInLowerCase = title.toLowerCase()
     const textForFindInLowerCase = textForFind.toLowerCase()
 
-    return !textForFindInLowerCase
-      .split(' ')
-      .map((word: string) => titleInLowerCase.includes(word))
-      .includes(false) && activeGenre === 'All' ? true : genres.includes(activeGenre)
+    const isFilmHasGenre =
+      activeGenre === 'All' ? true : genres.includes(activeGenre)
+    
+    const isFilmHasFindText =
+      !textForFindInLowerCase
+        .split(' ')
+        .map((word: string) => titleInLowerCase.includes(word))
+        .includes(false)
+
+    return isFilmHasFindText && isFilmHasGenre
   })
-  // const sortedFilmsByCategory =
 
   return (
     <ul className={styles.list}>
