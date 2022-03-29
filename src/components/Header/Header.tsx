@@ -3,6 +3,7 @@ import Search from "../Search";
 import GlobalSvgIcons from "../../assets/icons/GlobalSvgIcons";
 
 import styles from './Header.module.css'
+import {NavLink} from "react-router-dom";
 
 interface IProps {
   setTextForFind: (value: string) => void,
@@ -43,7 +44,9 @@ const Header = ({setTextForFind, setActiveGenre}: IProps) => {
     <header>
       <div className={styles.wrapper}>
         <div className={styles.flexbox}>
-          <GlobalSvgIcons type={'logo'}/>
+          <NavLink to='/'>
+            <GlobalSvgIcons type={'logo'}/>
+          </NavLink>
           <div className={styles.select}>
             <Select
               defaultValue={options[0]}
@@ -54,12 +57,15 @@ const Header = ({setTextForFind, setActiveGenre}: IProps) => {
           <Search setTextForFind={setTextForFind}/>
           <div className={styles.user}>
             <div className={styles.user__flexbox}>
-              <div className={styles.user__register}>
+
+              <NavLink to='/registration' className={styles.user__register}>
                 <span>Регистрация</span>
-              </div>
-              <div className={styles.user__login}>
+              </NavLink>
+
+              <NavLink to='/login' className={styles.user__login}>
                 <span>Вход</span>
-              </div>
+              </NavLink>
+
             </div>
           </div>
         </div>

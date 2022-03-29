@@ -9,15 +9,32 @@ router.get('/films', async (req, res) => {
   const searchText = req.query.searchText || 0
   const countPostsOnPage = 20
 
-  console.log(req.query.searchText)
-  if(searchText){
+  if (searchText) {
     const films = await Film.find({title: {$regex: searchText}})
-    console.log(films)
     return res.status(200).json({films})
   } else {
     const films = await Film.find({_id: {$gt: countPostsOnPage * page}}).limit(countPostsOnPage)
-    console.log(films)
     return res.status(200).json({films, countPages: 8})
+  }
+})
+
+router.post('/add-user', async (req, res) => {
+  const userData = req.body
+  const {username, login, password} = userData
+
+  const isLoginUniq = !await User.findOne({login})
+  const isUsernameUniq = !await User.findOne({username})
+
+  if (isLoginUniq && isUsernameUniq) {
+    const user = new User(userData)
+    user.save()
+    return res.send({message: "user was created"})
+  } else if (isLoginUniq) {
+    return res.send({message: "This login is taken"})
+  } else if (isUsernameUniq) {
+    return res.send({message: "This nickname is taken"})
+  } else {
+    return res.send({message: "This login and nickname are taken"})
   }
 })
 

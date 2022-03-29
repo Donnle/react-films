@@ -1,0 +1,95 @@
+body {
+  background-color: #B48A8A;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #996060;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.header {
+  width: 750px;
+}
+
+.headerTitle span {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  font-size: 3.6rem;
+  line-height: 1.2em;
+  padding: 25px 0;
+  border-bottom: 1px solid #000;
+}
+
+.mainInput__wrapper {
+  padding: 42px 50px 50px;
+}
+
+.mainLogin {
+  padding-bottom: 42px;
+  border-bottom: #000;
+}
+
+.mainLogin__input,
+.mainRegistration__input {
+  width: 100%;
+  font-size: 3.6rem;
+  line-height: 1.2em;
+  background-color: transparent;
+  border-bottom: 1px solid #000;
+}
+
+.mainLogin__input::-webkit-input-placeholder, .mainRegistration__input::-webkit-input-placeholder {
+  color: rgb(41, 41, 41);
+}
+
+.mainLogin__input::-moz-placeholder, .mainRegistration__input::-moz-placeholder {
+  color: rgb(41, 41, 41);
+}
+
+.mainLogin__input:-ms-input-placeholder, .mainRegistration__input:-ms-input-placeholder {
+  color: rgb(41, 41, 41);
+}
+
+.mainLogin__input::-ms-input-placeholder, .mainRegistration__input::-ms-input-placeholder {
+  color: rgb(41, 41, 41);
+}
+
+.mainLogin__input::placeholder,
+.mainRegistration__input::placeholder {
+  color: rgb(41, 41, 41);
+}
+
+.mainButtons {
+  display: flex;
+  align-items: center;
+  background-color: #7E4343;
+}
+
+.mainButtons__login,
+.mainButtons__registration {
+  text-align: center;
+  cursor: pointer;
+  flex: 0 1 50%;
+  padding: 19px 0;
+}
+
+.mainButtons__login {
+  background-color: #783a3a;
+}
+
+
+.mainButtons__login span {
+  font-size: 3.6rem;
+  line-height: 1.2em;
+}
+
+.mainButtons__registration span {
+  font-size: 2.4rem;
+  line-height: 1.15em;
+}
